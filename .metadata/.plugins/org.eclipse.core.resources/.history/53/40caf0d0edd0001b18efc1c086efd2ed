@@ -1,0 +1,47 @@
+package com.trabalho.crm.model;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.Data;
+
+@Data
+@Entity
+public class Cliente {
+   
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public Long id;
+	
+	
+	@Column(nullable = false )
+	public String nome;
+	
+	@Column(nullable = false )
+	public String cpf;
+	
+	@Column(nullable = false )
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+	public Date data_nascimento;
+	
+	@Column(nullable = false )
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	public int fone;
+	 
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	public BigDecimal limite_credito;
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+}
